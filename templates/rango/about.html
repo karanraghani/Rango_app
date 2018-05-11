@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<title>About</title>
+</head>
+<body>
+	<h1>This Page has been put together by Karan Raghani</h1>
+
+	<div>
+		image from static<br/>
+		<img src="{% static "images/mozilla.png" %}" alt="Mozilla Dino">
+	</div>
+
+	<div>
+		image from media <br/>
+		<img src="{{MEDIA_URL}}minion.jpg" alt="minion">
+	</div>
+
+	<a href="/rango">Home Page</a>
+</body>
+</html>

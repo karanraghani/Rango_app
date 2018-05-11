@@ -1,0 +1,8 @@
+db.sqlite3
+populate_rango.py
+*.pyc
+*~
+__pycache__
+myvenv
+.DS_Store
+/static
