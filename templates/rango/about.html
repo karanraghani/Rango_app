@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+{% extends 'rango/base.html' %}
 {% load staticfiles %}
-<html>
-<head>
-	<title>About</title>
-</head>
-<body>
+
+{% block title_block %}
+	About
+{% endblock %}
+
+{% block body_block %}
 	<h1>This Page has been put together by Karan Raghani</h1>
 
 	<div>
@@ -16,7 +17,4 @@
 		image from media <br/>
 		<img src="{{MEDIA_URL}}minion.jpg" alt="minion">
 	</div>
-
-	<a href="/rango">Home Page</a>
-</body>
-</html>
+{% endblock %}
