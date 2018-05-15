@@ -22,7 +22,7 @@ def index(request):
 	return render(request, 'rango/index.html', context_dict)
 
 def about(request):
-	return render(request, 'rango/about.html')
+	return render(request, 'rango/about.html', {'visits': request.session['visits']})
 
 def show_category(request, category_name_slug):
 	context_dict = {}
@@ -150,6 +150,7 @@ def get_server_side_cookie(request, cookie, default_val=None):
 	
 	return val
 
+# handling server side cookie
 def visitor_cookie_handler(request):
 	visits = int(get_server_side_cookie(request, 'visits', '1'))
 	last_visit_cookie = get_server_side_cookie(request, 'last_visit', str(datetime.now()))

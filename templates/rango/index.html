@@ -6,39 +6,44 @@
 {% endblock %}
 
 {% block body_block %}
-	<h1>Rango Says...</h1>
-
-	<div>
-		Hey there partner <br/>
-		You have visited the site {{visits}} times. <br/>
-		{% if categories %}
-		<h2> Most Viewed Categories</h2>
-			<ul>
-			{% for category in categories %}
-				<li>
-				<a href="{% url 'rango:show_category' category.slug %}">{{category.name}}</a>
-				</li>
-			{% endfor %}
-			</ul>
+	<div class="jumbotron">
+		<h1 class="display-4">Rango Says...</h1>
+		{% if authenticated %}
+		<strong>Hey there {{user.username}}!</strong>
 		{% else %}
-			Their are no Categories!
-		{% endif %}
-
-		{% if pages %}
-			<h2> Most Viewed Pages </h2>
-			<ul>
-			{% for page in pages %}
-				<li>
-					<a href="{{page.url}}">{{page.title}}</a>
-				</li>
-			{% endfor %}
-			</ul>
-		{% else %}
-			There are no Web Pages!
+		<strong>Hey there partner!</strong>
 		{% endif %}
 	</div>
-
-	<div>
+	<div class="row marketing">
+		<div class="col-lg-6">
+			{% if categories %}
+			<h2> Most Viewed Categories</h2>
+				<ul>
+				{% for category in categories %}
+					<li>
+					<a href="{% url 'rango:show_category' category.slug %}">{{category.name}}</a>
+					</li>
+				{% endfor %}
+				</ul>
+			{% else %}
+				Their are no Categories!
+			{% endif %}
+		</div>
+		<div class="col-lg-6">
+			{% if pages %}
+				<h2> Most Viewed Pages </h2>
+				<ul>
+				{% for page in pages %}
+					<li>
+						<a href="{{page.url}}">{{page.title}}</a>
+					</li>
+				{% endfor %}
+				</ul>
+			{% else %}
+				There are no Web Pages!
+			{% endif %}
+		</div>
+	</div>
 		<img src="{% static "images/1.png" %}" alt="Image of table" />
 	</div>
 {% endblock %}																																																																		
