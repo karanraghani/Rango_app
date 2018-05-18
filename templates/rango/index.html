@@ -8,7 +8,7 @@
 {% block body_block %}
 	<div class="jumbotron">
 		<h1 class="display-4">Rango Says...</h1>
-		{% if authenticated %}
+		{% if user.is_authenticated %}
 		<strong>Hey there {{user.username}}!</strong>
 		{% else %}
 		<strong>Hey there partner!</strong>

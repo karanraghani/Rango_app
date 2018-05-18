@@ -108,14 +108,15 @@ def register(request):
 			registered = True
 
 		else:
-			print("User Form Error:"+user_form.errors)
-			print("Profile From Error:"+profile_form.errors)
+			print(user_form.errors)
+			print(profile_form.errors)
 
 	return render(request, 'rango/register.html', {'user_form': user_form, 
 													'profile_form': profile_form,
 													'registered': registered})
 
-def login(request):
+def my_login(request):
+	context_dict ={}
 	if request.method == 'POST':
 		username = request.POST.get('username')
 		password = request.POST.get('password')
@@ -132,13 +133,14 @@ def login(request):
 
 		else:
 			print("Invalid Login Details {0},{1}".format(username,password))
-			return HttpResponse("Invalid Credentials")
+			context_dict['error'] = "Invalid Credentials"
+			#return HttpResponse("Invalid Credentials")
 
-	else:
-		return render(request,'rango/login.html', {})
+
+	return render(request,'rango/login.html', context_dict)
 
 @login_required
-def logout(request):
+def my_logout(request):
 	logout(request)
 	return HttpResponseRedirect(reverse('index'))
 

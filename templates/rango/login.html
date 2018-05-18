@@ -10,6 +10,11 @@
 		<strong>You are already logged in as: {{ user.username }}</strong>
 	{% else %}
 		<strong>Login to Rango</strong>
+		<br />
+		{% if error %}
+			{{error}}
+			<br />
+		{% endif %}
 		<form id="login" method="post" action="{% url 'rango:login' %}">
 			{% csrf_token %}
 			Username: <input type="text" name="username" value="" size="50">
